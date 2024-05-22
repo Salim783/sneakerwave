@@ -1,14 +1,9 @@
-const mysql = require('mysql2');
+const { Sequelize } = require('sequelize');
 
-const pool = mysql.createPool({
+const sequelize = new Sequelize('CDAProject', 'root', '', {
   host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'CDAProject',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-  port: 8000
+  dialect: 'mysql',
+  port: 8000 // Par défaut, MySQL utilise le port 3306. Change-le si nécessaire.
 });
 
-module.exports = pool.promise();
+module.exports = sequelize;

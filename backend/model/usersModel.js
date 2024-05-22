@@ -1,14 +1,29 @@
-const mysql = require('mysql12');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
-const userSchema = new mysql.Schema({
-  nom: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  telephone: String,
-  adresse: String,
-  date_naissance: Date
+const User = sequelize.define('User', {
+  nom: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  telephone: {
+    type: DataTypes.STRING
+  },
+  adresse: {
+    type: DataTypes.STRING
+  },
+  date_naissance: {
+    type: DataTypes.DATE
+  }
 });
-
-const User = mysql.model('User', userSchema);
 
 module.exports = User;
