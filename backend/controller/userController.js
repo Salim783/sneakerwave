@@ -39,4 +39,3 @@ exports.login = async (req, res) => {
     res.status(500).send({ message: "Erreur lors de la connexion de l'utilisateur", error: error.message });
   }
 };
-

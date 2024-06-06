@@ -1,9 +1,13 @@
 const { Sequelize } = require('sequelize');
+const config = require('./config.json');
 
-const sequelize = new Sequelize('CDAProject', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 8000
+const env = process.env.NODE_ENV || 'development';
+const { username, password, database, host, dialect, port } = config[env];
+
+const sequelize = new Sequelize(database, username, password, {
+  host,
+  dialect,
+  port,
 });
 
 module.exports = sequelize;

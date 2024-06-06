@@ -15,15 +15,16 @@ sequelize.sync()
 
 // Autoriser toutes les origines (pour le développement)
 app.use(cors());
-
 app.use(express.json()); // Middleware pour parser le JSON
 
 const port = 3001;
-app.use('/api/users', usersRouter); // Utilisation du routeur des utilisateurs
+app.use('/api/users', usersRouter);
 app.get('/', (req, res) => {
   res.send('Hello World ca va!');
 });
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
 module.exports = app;
